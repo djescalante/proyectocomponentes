@@ -8,14 +8,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'COMPONENTES',
-      home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Componentes APP'),
-          ),
-          body: const HomePageTem()),
-    );
+    return const MaterialApp(
+        title: 'COMPONENTES',
+        debugShowCheckedModeBanner: false,
+        home: HomePageTem());
   }
 }
