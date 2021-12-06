@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyectocomponentes/src/providers/menu_providers.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,27 +16,41 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _lista() {
-    return ListView(
-      //el metodo _listaItems se encargará de mostrar los elementos
-      children: _listaItems(),
+    //print(menuProvider.opciones);
+    //menuProvider.cargarData()
+    //FutureBuilder es un widget que permite dibujarse a si mismo basado en la ultima carga del Future
+    //estados de un Future - cuando se pide informacion- cuando se resuelve y cuando da error
+
+    return FutureBuilder(
+      future: menuProvider.cargarData(),
+      initialData: const [],
+      builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
+        return ListView(
+          //el metodo _listaItems se encargará de mostrar los elementos
+          children: _listaItems(snapshot.data),
+        );
+      }, //devuelve algo que se va dibujar en pantalla
     );
   }
 
   //listaItems que va a regresar? una lista de widgets
-  List<Widget> _listaItems() {
-    return [
-      const ListTile(
-        title: Text('Hola Mundo '),
-      ),
-      const Divider(),
-      const ListTile(
-        title: Text('Hola Mundo '),
-      ),
-      const Divider(),
-      const ListTile(
-        title: Text('Hola Mundo '),
-      ),
-      const Divider(),
-    ];
+  List<Widget> _listaItems(List<dynamic>? data) {
+    final List<Widget> opciones = [];
+
+    data!.forEach((opt) {
+      final widgetTemp = ListTile(
+        title: Text(opt['texto']),
+        leading: const Icon(
+          Icons.account_circle,
+          color: Colors.amber,
+        ),
+        trailing: const Icon(Icons.keyboard_arrow_right),
+        onTap: () {},
+      );
+      opciones
+        ..add(widgetTemp)
+        ..add(const Divider());
+    });
+    return opciones;
   }
 }
