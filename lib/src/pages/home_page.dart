@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyectocomponentes/src/providers/menu_providers.dart';
+import 'package:proyectocomponentes/src/utils/icono_string_util.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -36,21 +37,20 @@ class HomePage extends StatelessWidget {
   //listaItems que va a regresar? una lista de widgets
   List<Widget> _listaItems(List<dynamic>? data) {
     final List<Widget> opciones = [];
-
-    data!.forEach((opt) {
+    //data!.forEach((opt) {
+    for (var opt in data!) {
       final widgetTemp = ListTile(
         title: Text(opt['texto']),
-        leading: const Icon(
-          Icons.account_circle,
-          color: Colors.amber,
-        ),
+        //leading: const Icon(Icons.account_circle,color: Colors.amber,),
+
+        leading: getIcon(opt['icon']),
         trailing: const Icon(Icons.keyboard_arrow_right),
         onTap: () {},
       );
       opciones
         ..add(widgetTemp)
         ..add(const Divider());
-    });
+    }
     return opciones;
   }
 }
