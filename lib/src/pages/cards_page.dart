@@ -55,9 +55,9 @@ class CardPage extends StatelessWidget {
             image: NetworkImage(
                 'https://scontent.fpei3-1.fna.fbcdn.net/v/t31.18172-8/17218710_1253231141424786_5871703485702604821_o.jpg?_nc_cat=106&ccb=1-5&_nc_sid=973b4a&_nc_ohc=3zzut7qcvuwAX_vyXec&_nc_ht=scontent.fpei3-1.fna&oh=8fe5f746d16600e47070a271f838e8a4&oe=61D7A6E5'),
           ),
-          const Container(
-            child: Text('Imagen'),
-          ),
+          // const Container(
+          //   child: Text('Imagen'),
+          // ),
         ],
       ),
     );
